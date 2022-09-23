@@ -1,0 +1,36 @@
+<section class="container">
+  <h1>Tic-Tac-Toe</h1>
+  <div class="score">
+    <h2>Score</h2>
+    <div class="score-grid">
+      <div [ngClass]="getCurrentPlayer&&!winner?'':'highlight'">{{players[0].name}}</div>
+      <div [ngClass]="getCurrentPlayer&&!winner?'highlight':''">{{players[1].name}}</div>
+      <div>{{players[0].wins}}</div>
+      <div>{{players[1].wins}}</div>
+    </div>
+  </div>
+  <div style="text-align: center">
+    <h2 *ngIf="winner">{{ currentWinner === 'o' ? players[0].name : players[1].name }}</h2>
+    <h2 *ngIf="isDraw">DRAW!</h2>
+  </div>
+  <div>
+    <button class="new-game-btn" mat-stroked-button (click)="newGame()">Start New Game</button>
+    <!--    <button (click)="openDialog()">Open Dialog</button>-->
+    <button class="new-game-btn" mat-stroked-button (click)="checkWinsVariants()">check</button>
+  </div>
+  <div class="game">
+    <button
+      *ngFor="let square of squares; let idx = index"
+      (click)="onTouch(idx)"
+      [disabled]="square.disable"
+    >
+      {{square.value}}
+    </button>
+  </div>
+  <div>
+    <h2>Players</h2>
+    <ul>
+      <li *ngFor="let player of players">{{player.name}}</li>
+    </ul>
+  </div>
+</section>

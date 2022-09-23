@@ -1,0 +1,9 @@
+<h1 mat-dialog-title style="text-align: center">Enter your name</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill" style="display: block">
+    <input matInput [(ngModel)]="nickname">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions style="display: flex; justify-content: flex-end">
+  <button mat-stroked-button color="primary" [mat-dialog-close]="nickname" cdkFocusInitial>Next</button>
+</div>
